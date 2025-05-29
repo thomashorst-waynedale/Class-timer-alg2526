@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Segmented Class Timer</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f0f0f0; }
+    #bar-container { display: flex; height: 60px; width: 90%; margin: 20px auto; border: 2px solid #444; }
+    .segment {
+      display: flex; justify-content: center; align-items: center;
+      color: white; font-weight: bold; font-size: 16px; transition: flex 1s linear;
+    }
+    #timer-label { font-size: 24px; margin-top: 15px; }
+    #controls { margin-top: 20px; }
+    button, input { font-size: 16px; padding: 8px; margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Segmented Class Timer</h1>
+  <div id="bar-container"></div>
+  <div id="timer-label">Waiting...</div>
+  <div id="controls">
+    <button onclick="socket.emit('start-timer')">▶️ Start</button>
+    <button onclick="socket.emit('pause-timer')">⏸️ Pause</button>
+    <button onclick="socket.emit('reset-timer')">🔁 Reset</button>
+    <input type="number" id="jump" min="0" value="0" style="width:60px;" />
+    <button onclick="jumpTo()">⏩ Jump</button>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
